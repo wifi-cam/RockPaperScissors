@@ -34,10 +34,22 @@ function getUserChoice() {
 
 function playRound(userChoice, computerChoice) {
     // Get user choice and store it
+    
     getUserChoice();
     // getComputerChoice()
     getComputerChoice();
     // Set parameters for winning and losing combinations
+    if ((userChoice == 'rock') && (computerChoice =='paper')) {
+        console.log('Round Lost! Paper beats Rock!');
+        losses++;
+    } else if ((userChoice == 'rock') && (computerChoice =='scissors')) {
+        console.log('Round Won! Rock beats Scissors!');
+        wins++;
+    } else if ((userChoice == 'rock') && (computerChoice =='rock')) {
+        console.log('Draw!');
+    } else {
+        console.log('Error!');
+    }
 }
 
 
