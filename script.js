@@ -1,13 +1,13 @@
+const choices = ['rock', 'paper', 'scissors'];
 let computerChoice;
-let userChoice;
 
 function getComputerChoice () {
     // Roll random number 1-3 and assign to i
-    let shoot = Math.floor(Math.random() * 3); // Random # 1 - 3
-    if (shoot == 1) {
+    let shoot = Math.floor(Math.random() * choices.length); // Random selection from choices array
+    if (shoot == 0) {
         //console.log('Rock!'); // If i == 1 display 'Rock'
         computerChoice = 'rock'; 
-    } else if (shoot == 2) {
+    } else if (shoot == 1) {
         //console.log('Paper!'); // ElseIf i == 2 display 'Paper'
         computerChoice = 'paper';
     } else {
@@ -17,46 +17,42 @@ function getComputerChoice () {
 }
 
 function getUserChoice() {
-    let shoot = prompt("Enter Rock, Paper, or Scissors: ");
-    if (shoot == 'rock') {
-        //console.log('Rock!'); // If i == 1 display 'Rock'
-        userChoice = 'rock'; 
-    } else if (shoot == 'paper') {
-        //console.log('Paper!'); // ElseIf i == 2 display 'Paper'
-        userChoice = 'paper';
-    } else if (shoot == 'scissors') {
-        //console.log('Scissors!'); // Else display 'Scissors'
-        userChoice = 'scissors';
+    let shoot = prompt("Enter Rock Paper or Scissors: ");
+    while (shoot == null) {
+        shoot = prompt("Enter Rock Paper or Scissors: ");
+    }
+    shoot = shoot.toLowerCase();
+    let valid = checkSelection(shoot);
+    while (valid == false) {
+        shoot = prompt("Wrong Input. Enter Rock Paper or Scissors: ");
+        shoot = shoot.toLowerCase();
+        valid = checkSelection(shoot); // Once valid == true the while loop will break out
+    }
+    console.log(shoot);
+    console.log(valid);
+}
+
+
+function checkSelection(choice) { // Checks to see if typed input matches with one of the choices
+    if(choices.includes(choice)) {
+        return true;
     } else {
-        console.log('Invalid Choice');
+        return false;
     }
 }
 
-function playRound(userChoice, computerChoice) {
+
+function playRound() {
     // Get user choice and store it
-    
-    getUserChoice();
-    // getComputerChoice()
-    getComputerChoice();
-    // Set parameters for winning and losing combinations
-    if ((userChoice == 'rock') && (computerChoice =='paper')) {
-        console.log('Round Lost! Paper beats Rock!');
-        losses++;
-    } else if ((userChoice == 'rock') && (computerChoice =='scissors')) {
-        console.log('Round Won! Rock beats Scissors!');
-        wins++;
-    } else if ((userChoice == 'rock') && (computerChoice =='rock')) {
-        console.log('Draw!');
-    } else {
-        console.log('Error!');
-    }
+    const userChoice = getUserChoice();
+    const computerChoice = getComputerChoice();
 }
 
 
 function game() {
     for (let i = 0; i < 5; i++) { //5 Rounds
-        playRound();
+        
     }
 }
 
-game();
+playRound();
