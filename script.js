@@ -1,4 +1,8 @@
 const choices = ['rock', 'paper', 'scissors'];
+const buttons = document.getElementsByClassName('btn');
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
 let computerChoice;
 
 function getComputerChoice () {
@@ -48,11 +52,17 @@ function playRound() {
     const computerChoice = getComputerChoice();
 }
 
-
-function game() {
-    for (let i = 0; i < 5; i++) { //5 Rounds
-        
-    }
+for (let i=0; i< buttons.length; i++) {
+    buttons[i].addEventListener('click', () => {
+        console.log('Click!');
+    }, {
+        once: true
+    });
 }
+// function game() {
+//     for (let i = 0; i < 5; i++) { //5 Rounds
+        
+//     }
+// }
 
-playRound();
+//playRound();
