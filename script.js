@@ -6,13 +6,6 @@ const scissors = document.querySelector('#scissors');
 let computerChoice;
 
 
-buttons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-        userChoice = btn.id;
-        console.log(userChoice);
-    })
-})
-
 function getComputerChoice () {
     // Roll random number 1-3 and assign to i
     let shoot = Math.floor(Math.random() * choices.length); // Random selection from choices array
@@ -26,45 +19,32 @@ function getComputerChoice () {
         //console.log('Scissors!'); // Else display 'Scissors'
         computerChoice = 'scissors';
     }   
+    return computerChoice;
 }
 
-// function getUserChoice() {
-//     for (let i=0; i< buttons.length; i++) {
-//         buttons[i].addEventListener('click', () => {
-//             console.log(value);
-//         }, {
-//             once: true
-//         });
-//     }
-// }
+buttons.forEach(btn =>{
+    btn.addEventListener('click', function(){
+        playRound(btn.value);
+    })
+})
 
 
-function checkSelection(choice) { // Checks to see if typed input matches with one of the choices
-    if(choices.includes(choice)) {
-        return true;
-    } else {
-        return false;
-    }
-}
 
-
-function playRound() {
+function playRound(userChoice) {
     // Get user choice and store it
-    const userChoice = getUserChoice();
     const computerChoice = getComputerChoice();
+
+    if (userChoice === computerChoice) {
+        console.log(`${userChoice} == ${computerChoice}`)
+        console.log('Draw!');
+    } else if ((userChoice == 'rock' && computerChoice == 'scissors') ||
+            (userChoice == 'paper' && computerChoice == 'rock') ||
+            (userChoice == 'scissors' && computerChoice == 'paper')) {
+                console.log(`${userChoice} > ${computerChoice}`)
+                console.log('Win!');
+            } else {
+                console.log(`${computerChoice} > ${userChoice}`)
+                console.log('Lose!');
+            }
 }
 
-// for (let i=0; i< buttons.length; i++) {
-//     buttons[i].addEventListener('click', () => {
-//         console.log('Click!');
-//     }, {
-//         once: true
-//     });
-// }
-// function game() {
-//     for (let i = 0; i < 5; i++) { //5 Rounds
-        
-//     }
-// }
-
-//playRound();
