@@ -1,9 +1,17 @@
 const choices = ['rock', 'paper', 'scissors'];
-const buttons = document.getElementsByClassName('btn');
+const buttons = document.querySelectorAll(".btn");
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 let computerChoice;
+
+
+buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        userChoice = btn.id;
+        console.log(userChoice);
+    })
+})
 
 function getComputerChoice () {
     // Roll random number 1-3 and assign to i
@@ -20,21 +28,15 @@ function getComputerChoice () {
     }   
 }
 
-function getUserChoice() {
-    let shoot = prompt("Enter Rock Paper or Scissors: ");
-    while (shoot == null) {
-        shoot = prompt("Enter Rock Paper or Scissors: ");
-    }
-    shoot = shoot.toLowerCase();
-    let valid = checkSelection(shoot);
-    while (valid == false) {
-        shoot = prompt("Wrong Input. Enter Rock Paper or Scissors: ");
-        shoot = shoot.toLowerCase();
-        valid = checkSelection(shoot); // Once valid == true the while loop will break out
-    }
-    console.log(shoot);
-    console.log(valid);
-}
+// function getUserChoice() {
+//     for (let i=0; i< buttons.length; i++) {
+//         buttons[i].addEventListener('click', () => {
+//             console.log(value);
+//         }, {
+//             once: true
+//         });
+//     }
+// }
 
 
 function checkSelection(choice) { // Checks to see if typed input matches with one of the choices
@@ -52,13 +54,13 @@ function playRound() {
     const computerChoice = getComputerChoice();
 }
 
-for (let i=0; i< buttons.length; i++) {
-    buttons[i].addEventListener('click', () => {
-        console.log('Click!');
-    }, {
-        once: true
-    });
-}
+// for (let i=0; i< buttons.length; i++) {
+//     buttons[i].addEventListener('click', () => {
+//         console.log('Click!');
+//     }, {
+//         once: true
+//     });
+// }
 // function game() {
 //     for (let i = 0; i < 5; i++) { //5 Rounds
         
