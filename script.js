@@ -43,10 +43,11 @@ function playRound(userChoice) {
     } else if ((userChoice == 'rock' && computerChoice == 'scissors') ||
             (userChoice == 'paper' && computerChoice == 'rock') ||
             (userChoice == 'scissors' && computerChoice == 'paper')) {
-                const pText = document.createTextNode(`Winner!
+            wins++;
+            const pText = document.createTextNode(`Winner!
             ${userChoice} > ${computerChoice}
             Score: ${wins}`);
-            wins++;
+            
             document.getElementById('results').appendChild(pText);
             } else {
                 const pText = document.createTextNode(`Loser!
