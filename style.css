@@ -1,0 +1,25 @@
+h1 {
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+}
+
+.container {
+    margin: auto;
+    padding: 10px;
+    align-items: center;
+}
+
+.btn {
+    margin: auto;
+}
+
+.btn > img {
+    height: 10rem;
+    width: 10rem;
+}
+
+.results {
+    margin:auto;
+    align-items: center;
+}

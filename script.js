@@ -1,9 +1,12 @@
 const choices = ['rock', 'paper', 'scissors'];
 const buttons = document.querySelectorAll(".btn");
+const results = document.querySelector("result");
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 let computerChoice;
+let roundWon = '';
+let wins = 0;
 
 
 function getComputerChoice () {
@@ -28,23 +31,49 @@ buttons.forEach(btn =>{
     })
 })
 
-
+function addResults () {
+    if (roundWon == 'won') {
+        const pText = document.createTextNode(`Winner!
+        ${userChoice} > ${computerChoice}
+        Score: ${wins}`);
+        wins++;
+        document.getElementById('results').appendChild(pText);
+    } else if (roundWon == 'lost') {
+        const pText = document.createTextNode(`Loser!
+        ${userChoice} < ${computerChoice}
+        Score: ${wins}`);
+        document.getElementById('results').appendChild(pText);
+    } else {
+        const pText = document.createTextNode(`Tie!
+        ${userChoice} == ${computerChoice}
+        Score: ${wins}`);
+        document.getElementById('results').appendChild(pText);
+    }
+}
 
 function playRound(userChoice) {
     // Get user choice and store it
     const computerChoice = getComputerChoice();
+    document.getElementById('results').innerHTML = '';
 
     if (userChoice === computerChoice) {
-        console.log(`${userChoice} == ${computerChoice}`)
-        console.log('Draw!');
+        const pText = document.createTextNode(`Tie!
+        ${userChoice} == ${computerChoice}
+        Score: ${wins}`);
+        document.getElementById('results').appendChild(pText);
     } else if ((userChoice == 'rock' && computerChoice == 'scissors') ||
             (userChoice == 'paper' && computerChoice == 'rock') ||
             (userChoice == 'scissors' && computerChoice == 'paper')) {
-                console.log(`${userChoice} > ${computerChoice}`)
-                console.log('Win!');
+                const pText = document.createTextNode(`Winner!
+            ${userChoice} > ${computerChoice}
+            Score: ${wins}`);
+            wins++;
+            document.getElementById('results').appendChild(pText);
             } else {
-                console.log(`${computerChoice} > ${userChoice}`)
-                console.log('Lose!');
+                const pText = document.createTextNode(`Loser!
+            ${userChoice} < ${computerChoice}
+            Score: ${wins}`);
+            document.getElementById('results').appendChild(pText);
             }
 }
 
