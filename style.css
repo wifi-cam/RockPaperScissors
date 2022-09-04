@@ -19,7 +19,9 @@ h1 {
     width: 10rem;
 }
 
-.results {
+#results {
     margin:auto;
     align-items: center;
+    font-size: 24px;
+    font-weight: bolder;
 }
